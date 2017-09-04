@@ -14,13 +14,6 @@
 
 
 
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
 
 
 
@@ -102,20 +95,20 @@
 
 
 
-<meta name="description" content="插入排序 原理 插入排序的原理就像下图显示的一样:   排序  就是遍历整个数组, 让取出的当前元素A和之前的所有元素对比, 由于对比的元素B是倒序取出的, 所以我们一旦我们发现 B&amp;gt;A 我们就将B的位置向右移动一位, 一直到B&amp;lt;A或者没有B元素可取了我们才停止比较并取出下一轮的A元素进行上述操作 实现 既然原理已经很清晰了我们来看一下代码的逐步实现, 首先给出一个乱序的数组: var">
+<meta name="description" content="插入排序 原理 插入排序的原理就像下图显示的一样:     就是遍历整个数组, 让取出的当前元素A和之前的所有元素对比, 由于对比的元素B是倒序取出的, 所以我们一旦我们发现 B&amp;gt;A 我们就将B的位置向右移动一位, 一直到B&amp;lt;A或者没有B元素可取了我们才停止比较并取出下一轮的A元素进行上述操作 实现 既然原理已经很清晰了我们来看一下代码的逐步实现, 首先给出一个乱序的数组: var a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="插入排序的原理和实现(Swift)">
 <meta property="og:url" content="http://yoursite.com/2017/08/28/插入排序的原理和实现(Swift)/index.html">
 <meta property="og:site_name" content="greatLock&#39;s blog">
-<meta property="og:description" content="插入排序 原理 插入排序的原理就像下图显示的一样:   排序  就是遍历整个数组, 让取出的当前元素A和之前的所有元素对比, 由于对比的元素B是倒序取出的, 所以我们一旦我们发现 B&amp;gt;A 我们就将B的位置向右移动一位, 一直到B&amp;lt;A或者没有B元素可取了我们才停止比较并取出下一轮的A元素进行上述操作 实现 既然原理已经很清晰了我们来看一下代码的逐步实现, 首先给出一个乱序的数组: var">
+<meta property="og:description" content="插入排序 原理 插入排序的原理就像下图显示的一样:     就是遍历整个数组, 让取出的当前元素A和之前的所有元素对比, 由于对比的元素B是倒序取出的, 所以我们一旦我们发现 B&amp;gt;A 我们就将B的位置向右移动一位, 一直到B&amp;lt;A或者没有B元素可取了我们才停止比较并取出下一轮的A元素进行上述操作 实现 既然原理已经很清晰了我们来看一下代码的逐步实现, 首先给出一个乱序的数组: var a">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ovoy4lhz0.bkt.clouddn.com/charupaixu.gif">
 <meta property="og:image" content="http://ovoy4lhz0.bkt.clouddn.com/charupaixu_2.png">
 <meta property="og:image" content="http://ovoy4lhz0.bkt.clouddn.com/charupaixu_1.png">
-<meta property="og:updated_time" content="2017-09-04T13:55:09.000Z">
+<meta property="og:updated_time" content="2017-09-04T14:44:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="插入排序的原理和实现(Swift)">
-<meta name="twitter:description" content="插入排序 原理 插入排序的原理就像下图显示的一样:   排序  就是遍历整个数组, 让取出的当前元素A和之前的所有元素对比, 由于对比的元素B是倒序取出的, 所以我们一旦我们发现 B&amp;gt;A 我们就将B的位置向右移动一位, 一直到B&amp;lt;A或者没有B元素可取了我们才停止比较并取出下一轮的A元素进行上述操作 实现 既然原理已经很清晰了我们来看一下代码的逐步实现, 首先给出一个乱序的数组: var">
+<meta name="twitter:description" content="插入排序 原理 插入排序的原理就像下图显示的一样:     就是遍历整个数组, 让取出的当前元素A和之前的所有元素对比, 由于对比的元素B是倒序取出的, 所以我们一旦我们发现 B&amp;gt;A 我们就将B的位置向右移动一位, 一直到B&amp;lt;A或者没有B元素可取了我们才停止比较并取出下一轮的A元素进行上述操作 实现 既然原理已经很清晰了我们来看一下代码的逐步实现, 首先给出一个乱序的数组: var a">
 <meta name="twitter:image" content="http://ovoy4lhz0.bkt.clouddn.com/charupaixu.gif">
 
 
@@ -335,8 +328,8 @@
 <h5 id="原理">原理</h5>
 <p>插入排序的原理就像下图显示的一样:</p>
 <div class="figure">
-<img src="http://ovoy4lhz0.bkt.clouddn.com/charupaixu.gif" alt="排序">
-<p class="caption">排序</p>
+<img src="http://ovoy4lhz0.bkt.clouddn.com/charupaixu.gif">
+
 </div>
 <p>就是遍历整个数组, 让取出的当前元素<code>A</code>和之前的所有元素对比, 由于对比的元素<code>B</code>是倒序取出的, 所以我们一旦我们发现 <code>B&gt;A</code> 我们就将<code>B</code>的位置向右移动一位, 一直到<code>B&lt;A</code>或者没有<code>B</code>元素可取了我们才停止比较并取出下一轮的<code>A</code>元素进行上述操作</p>
 <h5 id="实现">实现</h5>
@@ -354,8 +347,8 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> array = [<span class="number">6</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">4</span>]</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>..&lt;array.<span class="built_in">count</span> &#123;</div><div class="line">    <span class="keyword">var</span> currentNum = array[i]</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> (<span class="number">0</span>..&lt;i).reversed() &#123;</div><div class="line">        <span class="keyword">if</span> array[j] &gt; currentNum &#123;</div><div class="line">            array[j + <span class="number">1</span>] = array[j]</div><div class="line">            array[j] = currentNum</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">break</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(array)    <span class="comment">//[1, 2, 3, 4, 5, 6, 7, 8]</span></div></pre></td></tr></table></figure>
 <p>下面我们就来分析一下这段代码的时间复杂度, 先假设array的长度是n, 每一行的执行代价为 C<sub>i</sub> , 那么第二行的代码的执行代价为 C<sub>2</sub> 执行次数为<code>n - 1</code>, 第三行的执行代价为 C<sub>3</sub> 执行次数为<code>n - 2</code> ……最终的整理:</p>
 <div class="figure">
-<img src="http://ovoy4lhz0.bkt.clouddn.com/charupaixu_2.png" alt="image">
-<p class="caption">image</p>
+<img src="http://ovoy4lhz0.bkt.clouddn.com/charupaixu_2.png">
+
 </div>
 <p>上述中的最坏情况指的是array数组碰巧是一个倒序排列的数组, 使得第5行的判断每次都是true, 所以这段代码在最坏情况下的运行时间为:</p>
 <p>T(n) = C<sub>2</sub> * (n - 1) + C<sub>3</sub> * (n - 2) + C<sub>4</sub> * <span class="math inline">\(\sum_{i=1}^{n-1} i\)</span> + C<sub>5</sub> * <span class="math inline">\(\sum_{i=1}^{n-1} i\)</span> + C<sub>6</sub> * <span class="math inline">\(\sum_{i=1}^{n-1} i\)</span> + C<sub>7</sub> * <span class="math inline">\(\sum_{i=1}^{n-1} i\)</span></p>
@@ -364,12 +357,12 @@
 <p>我们可以把时间简单的表示为 a<span class="math inline">\(n^2\)</span> + bn + c , 而其中的常量a, b和c 又是依赖语句执行代价C<sub>i</sub>. 因此它是n的二次函数也记为 <span class="math inline">\(\theta\)</span>(<span class="math inline">\(n^2\)</span>).</p>
 <p>那么这段代码在最好的情况下是怎样的呢</p>
 <div class="figure">
-<img src="http://ovoy4lhz0.bkt.clouddn.com/charupaixu_1.png" alt="image">
-<p class="caption">image</p>
+<img src="http://ovoy4lhz0.bkt.clouddn.com/charupaixu_1.png">
+
 </div>
 <p>T(n) = C<sub>2</sub> * (n - 1) + C<sub>3</sub> * (n - 2) + C<sub>4</sub> * (n - 1) + C<sub>5</sub> * (n - 1) + C<sub>9</sub> * (n - 1)</p>
 <p>​ = (C<sub>2</sub> + C<sub>3</sub> + C<sub>4</sub> + C<sub>5</sub> + C<sub>9</sub>) * n - (C<sub>2</sub> + 2 * C<sub>3</sub> + C<sub>4</sub> + C<sub>5</sub> + C<sub>9</sub>)</p>
-<p>同理它是n的线性函数, 记为<span class="math inline">\(\theta\)</span>(n).</p>
+<p>同理它是n的线性函数, 记为<span class="math inline">\(\theta​\)</span>(n).</p>
 <h3 id="总结">总结</h3>
 <p>在实际项目运用中, 对于很多算法而言最坏情况是经常出现的, 比如说, 当数据库检索一条特定的信息的时候, 如果该信息不在数据库中存在, 检索算法的最坏情况就会出现, 在很多应用中, 对缺失信息的检索是很频繁的. 所以我们在讨论一个算法的复杂度的时候往往说的就是最坏的情况. So对于插入排序来讲它的时间复杂度就是<span class="math inline">\(\theta\)</span>(<span class="math inline">\(n^2\)</span>).</p>
 <p>(ps:第一次写博客, 有错的地方请及时给我说, 别误导了别人.)</p>
