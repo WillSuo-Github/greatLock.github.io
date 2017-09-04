@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="插入排序 原理 插入排序的原理就像下图显示的一样:   排序  就是遍历整个数组, 让取出的当前元素A和之前的所有元素对比, 由于对比的元素B是倒序取出的, 所以我们一旦我们发现 B&amp;gt;A 我们就将B的位置向右移动一位, 一直到B&amp;lt;A或者没有B元素可取了我们才停止比较并取出下一轮的A元素进行上述操作 实现 既然原理已经很清晰了我们来看一下代码的逐步实现, 首先给出一个乱序的数组: var">
+<meta property="og:type" content="article">
+<meta property="og:title" content="插入排序的原理和实现(Swift)">
+<meta property="og:url" content="http://yoursite.com/2017/08/28/插入排序的原理和实现(Swift)/index.html">
+<meta property="og:site_name" content="greatLock&#39;s blog">
+<meta property="og:description" content="插入排序 原理 插入排序的原理就像下图显示的一样:   排序  就是遍历整个数组, 让取出的当前元素A和之前的所有元素对比, 由于对比的元素B是倒序取出的, 所以我们一旦我们发现 B&amp;gt;A 我们就将B的位置向右移动一位, 一直到B&amp;lt;A或者没有B元素可取了我们才停止比较并取出下一轮的A元素进行上述操作 实现 既然原理已经很清晰了我们来看一下代码的逐步实现, 首先给出一个乱序的数组: var">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ovoy4lhz0.bkt.clouddn.com/charupaixu.gif">
+<meta property="og:image" content="http://ovoy4lhz0.bkt.clouddn.com/charupaixu_2.png">
+<meta property="og:image" content="http://ovoy4lhz0.bkt.clouddn.com/charupaixu_1.png">
+<meta property="og:updated_time" content="2017-09-04T13:55:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="插入排序的原理和实现(Swift)">
+<meta name="twitter:description" content="插入排序 原理 插入排序的原理就像下图显示的一样:   排序  就是遍历整个数组, 让取出的当前元素A和之前的所有元素对比, 由于对比的元素B是倒序取出的, 所以我们一旦我们发现 B&amp;gt;A 我们就将B的位置向右移动一位, 一直到B&amp;lt;A或者没有B元素可取了我们才停止比较并取出下一轮的A元素进行上述操作 实现 既然原理已经很清晰了我们来看一下代码的逐步实现, 首先给出一个乱序的数组: var">
+<meta name="twitter:image" content="http://ovoy4lhz0.bkt.clouddn.com/charupaixu.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/28/插入排序的原理和实现(Swift)/"/>
+
+
+
+
+
+  <title>插入排序的原理和实现(Swift) | greatLock's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">greatLock's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/28/插入排序的原理和实现(Swift)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="greatLock">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovoy4lhz0.bkt.clouddn.com/IMG_0341.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="greatLock's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">插入排序的原理和实现(Swift)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T00:00:42+08:00">
+                2017-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="插入排序">插入排序</h3>
+<h5 id="原理">原理</h5>
+<p>插入排序的原理就像下图显示的一样:</p>
+<div class="figure">
+<img src="http://ovoy4lhz0.bkt.clouddn.com/charupaixu.gif" alt="排序">
+<p class="caption">排序</p>
+</div>
+<p>就是遍历整个数组, 让取出的当前元素<code>A</code>和之前的所有元素对比, 由于对比的元素<code>B</code>是倒序取出的, 所以我们一旦我们发现 <code>B&gt;A</code> 我们就将<code>B</code>的位置向右移动一位, 一直到<code>B&lt;A</code>或者没有<code>B</code>元素可取了我们才停止比较并取出下一轮的<code>A</code>元素进行上述操作</p>
+<h5 id="实现">实现</h5>
+<p>既然原理已经很清晰了我们来看一下代码的逐步实现, 首先给出一个乱序的数组:</p>
+<p><code>var array = [6,5,3,1,8,7,2,4]</code></p>
+<p>我们从角标1开始进行第一层的for循环</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>..&lt;array.<span class="built_in">count</span> &#123;</div><div class="line">     <span class="keyword">var</span> currentNum = array[i]</div><div class="line">     <span class="keyword">for</span> j <span class="keyword">in</span> (<span class="number">0</span>..&lt;i).reversed() &#123;</div><div class="line"></div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>最先取出的元素是角标为<code>i = 1</code>的<code>currentNum = 5</code>与角标为0的元素<code>6</code>相比较, 元素<code>6</code>要比<code>5</code>大所以我们把元素<code>6</code>向右移动一位, 然后把原来是<code>6</code>的位置填充为<code>5</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">array[j + <span class="number">1</span>] = arr[j]</div><div class="line">array[j] = currentNum</div></pre></td></tr></table></figure>
+<p>得出的数组是</p>
+<p><code>[5,6,3,1,8,7,2,4]</code></p>
+<p>然后开始第一层的第二次循环, 当<code>i= 2</code>的时候<code>currentNum = 3</code>与它之前的元素<code>6</code>比较, 由于<code>6&gt;3</code>我们把<code>6</code>向右移动一位, 然后把<code>6</code>的位置填充为<code>3</code> , 再比较它之前的元素<code>5</code>, <code>5</code>也大于<code>3</code>我们将<code>5</code>也向右移动一位, 然后把<code>5</code>的位置填充为<code>3</code>最后得到的数组应该是</p>
+<p><code>[3,5,6,1,8,7,2,4]</code></p>
+<p>以此类推我们的代码写出来应该长这个样子</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> array = [<span class="number">6</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">4</span>]</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>..&lt;array.<span class="built_in">count</span> &#123;</div><div class="line">    <span class="keyword">var</span> currentNum = array[i]</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> (<span class="number">0</span>..&lt;i).reversed() &#123;</div><div class="line">        <span class="keyword">if</span> array[j] &gt; currentNum &#123;</div><div class="line">            array[j + <span class="number">1</span>] = array[j]</div><div class="line">            array[j] = currentNum</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">break</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(array)    <span class="comment">//[1, 2, 3, 4, 5, 6, 7, 8]</span></div></pre></td></tr></table></figure>
+<p>下面我们就来分析一下这段代码的时间复杂度, 先假设array的长度是n, 每一行的执行代价为 C<sub>i</sub> , 那么第二行的代码的执行代价为 C<sub>2</sub> 执行次数为<code>n - 1</code>, 第三行的执行代价为 C<sub>3</sub> 执行次数为<code>n - 2</code> ……最终的整理:</p>
+<div class="figure">
+<img src="http://ovoy4lhz0.bkt.clouddn.com/charupaixu_2.png" alt="image">
+<p class="caption">image</p>
+</div>
+<p>上述中的最坏情况指的是array数组碰巧是一个倒序排列的数组, 使得第5行的判断每次都是true, 所以这段代码在最坏情况下的运行时间为:</p>
+<p>T(n) = C<sub>2</sub> * (n - 1) + C<sub>3</sub> * (n - 2) + C<sub>4</sub> * <span class="math inline">\(\sum_{i=1}^{n-1} i\)</span> + C<sub>5</sub> * <span class="math inline">\(\sum_{i=1}^{n-1} i\)</span> + C<sub>6</sub> * <span class="math inline">\(\sum_{i=1}^{n-1} i\)</span> + C<sub>7</sub> * <span class="math inline">\(\sum_{i=1}^{n-1} i\)</span></p>
+<p>​ = C<sub>2</sub> * (n - 1) + C<sub>3</sub> * (n - 2) + C<sub>4</sub> * (<span class="math inline">\(\frac{n * (n - 1)}{2}\)</span> ) + C<sub>5</sub> * (<span class="math inline">\(\frac{n * (n - 1)}{2}\)</span> ) + C<sub>6</sub> * (<span class="math inline">\(\frac{n * (n - 1)}{2}\)</span> ) + C<sub>7</sub> * (<span class="math inline">\(\frac{n * (n - 1)}{2}\)</span> )</p>
+<p>​ = (<span class="math inline">\(\frac{C₄}{2}\)</span> + <span class="math inline">\(\frac{C₅}{2}\)</span> + <span class="math inline">\(\frac{C₆}{2}\)</span> + <span class="math inline">\(\frac{C₇}{2}\)</span> ) $n^2 $ + (C<sub>2</sub> + C<sub>3</sub> - <span class="math inline">\(\frac{C₄}{2}\)</span> - <span class="math inline">\(\frac{C₅}{2}\)</span> - <span class="math inline">\(\frac{C₆}{2}\)</span> - <span class="math inline">\(\frac{C₇}{2}\)</span>)n - (C<sub>2</sub> + C<sub>3</sub>)</p>
+<p>我们可以把时间简单的表示为 a<span class="math inline">\(n^2\)</span> + bn + c , 而其中的常量a, b和c 又是依赖语句执行代价C<sub>i</sub>. 因此它是n的二次函数也记为 <span class="math inline">\(\theta\)</span>(<span class="math inline">\(n^2\)</span>).</p>
+<p>那么这段代码在最好的情况下是怎样的呢</p>
+<div class="figure">
+<img src="http://ovoy4lhz0.bkt.clouddn.com/charupaixu_1.png" alt="image">
+<p class="caption">image</p>
+</div>
+<p>T(n) = C<sub>2</sub> * (n - 1) + C<sub>3</sub> * (n - 2) + C<sub>4</sub> * (n - 1) + C<sub>5</sub> * (n - 1) + C<sub>9</sub> * (n - 1)</p>
+<p>​ = (C<sub>2</sub> + C<sub>3</sub> + C<sub>4</sub> + C<sub>5</sub> + C<sub>9</sub>) * n - (C<sub>2</sub> + 2 * C<sub>3</sub> + C<sub>4</sub> + C<sub>5</sub> + C<sub>9</sub>)</p>
+<p>同理它是n的线性函数, 记为<span class="math inline">\(\theta\)</span>(n).</p>
+<h3 id="总结">总结</h3>
+<p>在实际项目运用中, 对于很多算法而言最坏情况是经常出现的, 比如说, 当数据库检索一条特定的信息的时候, 如果该信息不在数据库中存在, 检索算法的最坏情况就会出现, 在很多应用中, 对缺失信息的检索是很频繁的. 所以我们在讨论一个算法的复杂度的时候往往说的就是最坏的情况. So对于插入排序来讲它的时间复杂度就是<span class="math inline">\(\theta\)</span>(<span class="math inline">\(n^2\)</span>).</p>
+<p>(ps:第一次写博客, 有错的地方请及时给我说, 别误导了别人.)</p>
+<h3 id="参考文献">参考文献:</h3>
+<ul>
+<li><算法导论></算法导论></li>
+<li><a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;ved=0ahUKEwiCgcm9g4nWAhVillQKHSL5CckQFggnMAA&amp;url=https%3A%2F%2Fzh.wikipedia.org%2Fzh-hans%2F%25E6%258F%2592%25E5%2585%25A5%25E6%258E%2592%25E5%25BA%258F&amp;usg=AFQjCNEuDNLPSTX_PEfW6i72RXEP7eYqNA" target="_blank" rel="external">插入排序- 维基百科，自由的百科全书</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="vcomments"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="http://ovoy4lhz0.bkt.clouddn.com/IMG_0341.JPG"
+              alt="greatLock" />
+          
+            <p class="site-author-name" itemprop="name">greatLock</p>
+            <p class="site-description motion-element" itemprop="description">ios vegetable dog developer</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/greatLock" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:a739002611@outlook.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">1.</span> <span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原理"><span class="nav-number">1.0.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现"><span class="nav-number">1.0.2.</span> <span class="nav-text">实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">greatLock</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine@1.1.4/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+    new Valine({
+        av: AV,
+        el: '#vcomments' ,
+        verify: false,
+        notify: false,
+        app_id: 'ygbPHr6jO0nn31IxWdx9juOw-gzGzoHsz',
+        app_key: '7wI3PSBrzhede4ILCLv4bmRT',
+        placeholder: 'hello~'
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ["$","$"], ["\\(","\\)"], ["~","~"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
